@@ -1694,6 +1694,11 @@ class AGI
             $parse = explode(' ', trim($str));
             $in_token = false;
             foreach ($parse as $token) {
+                // If there's multiple spaces, we'll end up with $token === '',
+                // so just skip it
+                if (!$token) {
+                    continue;
+                }
                 if ($in_token) // we previously hit a token starting with ')' but not ending in ')'
                 {
                     $ret['data'] .= ' ' . trim($token, '() ');
