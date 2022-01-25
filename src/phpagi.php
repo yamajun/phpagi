@@ -1799,9 +1799,8 @@ class AGI
  * @param string $message error message
  * @param string $file path to file
  * @param integer $line line number of error
- * @param array $context variables in the current scope
  */
-function phpagi_error_handler($level, $message, $file, $line, $context)
+function phpagi_error_handler($level, $message, $file, $line)
 {
     if (ini_get('error_reporting') == 0) return; // this happens with an @
 
@@ -1850,7 +1849,6 @@ function phpagi_error_handler($level, $message, $file, $line, $context)
         }
 
         // include variables
-        $message .= "\n\nContext:\n" . print_r($context, true);
         $message .= "\n\nGLOBALS:\n" . print_r($GLOBALS, true);
         $message .= "\n\nBacktrace:\n" . print_r(debug_backtrace(), true);
 
