@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "bmewburn.vscode-intelephense-client",
+        "neilbrayfield.php-docblocker",
+        "obliviousharmony.vscode-php-codesniffer",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens"
+    ]
+}
