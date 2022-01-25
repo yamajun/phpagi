@@ -1,5 +1,5 @@
 {
-    "name": "welltime/phpagi",
+    "name": "xrobau/phpagi",
     "description": "PHPAGI is a PHP class for the Asterisk Gateway Interface.",
     "type": "library",
     "license": "LGPL-2.1-or-later",
@@ -9,5 +9,7 @@
             "src/phpagi-asmanager.php"
         ]
     },
-    "require": {}
+    "require": {
+        "php": ">=8"
+    }
 }
