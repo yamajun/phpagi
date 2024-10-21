@@ -167,9 +167,18 @@ class AGI
 
         ob_implicit_flush(true);
 
-        // open stdin & stdout
-        $this->in = defined('STDIN') ? STDIN : fopen('php://stdin', 'r');
-        $this->out = defined('STDOUT') ? STDOUT : fopen('php://stdout', 'w');
+        // If we've already been given 'in' or 'out', use that. This is to make it
+        // easy to mock tests without needing heroic efforts to close stdin!
+        if (isset($this->config['phpagi']['stdin'])) {
+            $this->in = $this->config['phpagi']['stdin'];
+        } else {
+            $this->in = defined('STDIN') ? STDIN : fopen('php://stdin', 'r');
+        }
+        if (isset($this->config['phpagi']['stdout'])) {
+            $this->out = $this->config['phpagi']['stdout'];
+        } else {
+            $this->out = defined('STDOUT') ? STDOUT : fopen('php://stdout', 'w');
+        }
 
         // initialize error handler
         if ($this->config['phpagi']['error_handler'] == true) {
