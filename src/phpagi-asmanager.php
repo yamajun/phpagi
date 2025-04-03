@@ -198,7 +198,7 @@
               $m[1] = 'Ignore me';
           }
           $msgarr_tmp = $msgarr;
-          $str = array_pop($msgarr);
+          $str = array_slice($msgarr, -1)[0];
           $lastline = strpos($str, '--END COMMAND--');
           if (false !== $lastline) {
               $parameters['data'] = substr($str, 0, $lastline-1); // cut '\n' too
