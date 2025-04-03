@@ -192,7 +192,11 @@
       $type = strtolower($r[0]);
 
       if ($r[1] == 'Success' || $r[1] == 'Follows') {
-          $m = explode(': ', $msgarr[2]);
+          if (array_key_exists(2, $msgarr)) {
+              $m = explode(': ', $msgarr[2]);
+          } else {
+              $m[1] = 'Ignore me';
+          }
           $msgarr_tmp = $msgarr;
           $str = array_pop($msgarr);
           $lastline = strpos($str, '--END COMMAND--');
